@@ -1,0 +1,19 @@
+
+server:
+  port: 9090
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/springcloud?serverTimezone=Asia/Shanghai
+  application:
+    name: itcast-provider  # \u5E94\u7528\u540D\u79F0\uFF0C\u6CE8\u518C\u5230eureka\u540E\u7684\u670D\u52A1\u540D\u79F0
+mybatis:
+  type-aliases-package: cn.itcast.service.pojo
+eureka:
+  client:
+    service-url: # EurekaServer\u5730\u5740
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+  instance:
+      lease-expiration-duration-in-seconds: 10 # 10\u79D2\u5373\u8FC7\u671F
+      lease-renewal-interval-in-seconds: 5 # 5\u79D2\u4E00\u6B21\u5FC3\u8DF3

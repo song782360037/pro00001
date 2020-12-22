@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <counter :num1="num" @incr1="incr()"></counter>
+
+</div>
+
+</body>
+
+<script src="vuejs-2.5.16.js"></script>
+<script>
+
+    //全局组件
+    /*Vue.component("counter",{
+        template: "<button @click='num++'>点我{{num}}</button>",
+        data(){
+            return {
+                num: 0
+            }
+        }
+    })*/
+
+    //局部组件
+    /*const count = {
+        template: "<span>我叫{{name}}</span>",
+        data(){
+            return {
+                name: "张三"
+            }
+        }
+    }*/
+
+        Vue.component("counter",{
+        template: "<button @click='subIncr'>fuck me! &nbsp; &nbsp; &nbsp; &nbsp;:{{num1}}</button>",
+        props: {
+            num1: {
+                type: Number,
+                default: 0,
+            }
+        },
+        methods: {
+            subIncr(){
+                this.$emit("incr1");
+            }
+        }
+    })
+
+    const testVue = new Vue({
+        el: "#app",
+        data: {
+          num: 0
+        },/*,
+        components: {
+            counter: count
+        }*/
+        methods: {
+            incr(){
+                this.num++
+            }
+        }
+    })
+</script>
+</html>
